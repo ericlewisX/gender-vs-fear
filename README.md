@@ -62,7 +62,7 @@ The results of the Bonferroni Correction are shown in the table below:
 
 As we can see from the right-most column, after the correction, out of all the phobias, the only null hypothesis we fail to reject is related to the Fear of Heights. 
 
-That is to say, Every other phobia is somehow dependent on a person’s gender. 
+That is to say, every other phobia is somehow dependent on a person’s gender. 
 
 And for height, we fail to reject that a person’s Fear of Heights is independent of their gender.
 
