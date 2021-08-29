@@ -5,6 +5,7 @@ Galvanize Capstone Project: Gender vs Fear
 The objecive of this project is to find out if a key demographic of an individual has predictive power. To do this we want to see if a person's gender has a statistical signficance on their phobias. This is accomplished using Chi-Squared Hypothesis Testing. 
 
 ## Potential Use-Cases
+Finding if/which key demographics have influence over an individual's preferences, opinions, habits, or even fears can be used in advertising. It can also help make certain products more targeted. For example, editing a horror film during post-production to target a certain demographic.
 
 ## Data
 We will be running a hypothesis test on the [Young People Survey](https://www.kaggle.com/miroslavsabo/young-people-survey?select=responses.csv) dataset which was made available on kaggle. The survey was done by participants found by members of a statistics class from a University in Slovakia. The survey was translated from Slovak into English, and contained over 1000 participants, ages 15 - 30. It was submitted in both electronic and written form. 
@@ -13,6 +14,8 @@ The dataset itself contains over 100 columns but for the purposes of the project
 
 ## Data-Cleaning
 Since the amount of null values in some columns were at most only 2%, I ended up dropping those entries. It was a long survey so any presence of null values I figured was due to human-error such as skipping a question or data-loss from transferring the electronic or written records.
+
+I also made a subset of the dataframe built from the survey so I can extract certain feature columns more easily and conduct seperate hypothesis tests more efficiently. 
 
 ## Feature Selection
 The features I chose for the hypothesis test were Gender and Phobias. 
@@ -39,28 +42,33 @@ So our process will be to check for independence of Gender to each of the column
 We will tackle our objective by doing a hypothesis test between Gender and Phobias.
 
 ###### Null Hypothesis:
-    
-$H_0$ : Phobias are independent of a person's Gender.
-    
+```math   
+H_0 : Phobias are independent of a person's Gender.
+```    
 
 ###### Alternate Hypothesis:
-
-$H_1$ : Phobias and Gender are not independent and there exists a relationship between them.
-
+```math
+H_1 : Phobias and Gender are not independent and there exists a relationship between them.
+```
 
 ### Chi-Squared Test
 Since we are dealing with categorical data, to achieve this, we will be using the chi-squared test of independence with a significance level of 0.05. 
 
-$$\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}$$
+<!-- 
+$\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}$
 
-$$\alpha = 0.05 $$ 
+$\alpha = 0.05 $  -->
+![Imgur](https://i.imgur.com/k6rPvFF.png)
+
 
 ### Bonferroni Corrected p-value
 
-$$Bonferroni \ corrected \ p-value = \frac{p_0}{n}$$
+<!-- $Bonferroni \ corrected \ p-value = \frac{p_0}{n}$
 
 $$where: \ \ \ \ p_0 = original \ p-value$$ 
 $$n = \# \ of \ tests \ performed$$ 
+ -->
+![Imgur](https://i.imgur.com/3tsAhJA.png)
 
 Since we are comparing multiple categories against each other, the rate of a possible Type 1 Error compound on each test. 
 
@@ -82,7 +90,7 @@ This graph shows the number of Males and Females that picked each Likert scale c
 Now with that visual in mind, we use the `crosstab_chi2` function that does the cross tabulation and the chi-squared in tandem.
 
 
-```
+```python
 def crosstab_chi2(index, columns, alpha_signif):
     ''' The function will return the chi-squared test statistic, associated p-value,
         degrees of freedom, and the expected freq array.
@@ -114,7 +122,7 @@ Since the Bonferroni Correction penalizes the testing process as a whole we need
 
 Using the `bonferroni_adjustment` function; what we did to Fear of Flying we’ll do to every other phobia with the addition of getting the bonferroni-adjustment.
 
-```
+```python
 def bonferroni_adjustment(dataframe, alpha_sig):
     ''' The function will return the Bonferroni-Corrected p-values for multiple tests,
     the corrected alpha for the Bonferroni method, and the boolean for if a hypothesis 
