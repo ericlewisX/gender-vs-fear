@@ -1,4 +1,3 @@
-# Boilerplate
 import pandas as pd
 
 from scipy import stats
@@ -7,7 +6,8 @@ import statsmodels as sm
 import csv
 from IPython.display import display, Math
 
-
+# Data Manipulation Functions
+ 
 def true_column_name(filename = 'archive/columns.csv'):
     '''
     The original variable names were shortened in the responses.csv file. The shortened-unshortened name pairs are in the 
@@ -35,6 +35,8 @@ def true_column_name(filename = 'archive/columns.csv'):
             mydict = {rows[1]:rows[0] for rows in reader}
     
     return mydict
+
+# Analysis Functions
 
 def crosstab_chi2(index, columns, alpha_signif):
     ''' The function will return the chi-squared test statistic, associated p-value,
