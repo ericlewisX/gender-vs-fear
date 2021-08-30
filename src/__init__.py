@@ -48,7 +48,7 @@ if __name__ == "__main__":
     phobias1['Gender'] = demographics['Gender']
         # phobias1[['Flying', 'Gender']].sample(5)
 
-    # Crosstabulation
+    # Crosstabulation and Chi-squared Results
     for column in phobias1:
         print(crosstab_chi2(phobias1.iloc[:, -1], phobias1[column], 0.05))
 
