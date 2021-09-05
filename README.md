@@ -4,6 +4,9 @@ Galvanize Capstone Project: Gender vs Fear
 ## Objective
 The objecive of this project is to find out if a key demographic of an individual has predictive power. To do this we want to see if a person's gender has a statistical signficance on their phobias. This is accomplished using Chi-Squared Hypothesis Testing. 
 
+Results : For 9 out of 10 phobias we reject that the phobia and a person's gender are independent of each other. Another way to say this is that for these 9 phobias, there is claim that each phobia is somehow dependent on a person’s gender. 
+The last phobia (fear of heights), we fail to reject that a person’s Fear of Heights is independent of their gender.
+
 ## Potential Use-Cases
 Finding if/which key demographics have influence over an individual's preferences, opinions, habits, or even fears can be used in advertising. It can also help make certain products more targeted. For example, editing a horror film during post-production to target a certain demographic.
 
